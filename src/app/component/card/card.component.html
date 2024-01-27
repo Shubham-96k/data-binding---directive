@@ -1,0 +1,21 @@
+<!-- {{postData | json}} -->
+
+<h1 class="bg-info p-4 text-white text-center mb-4">Cards</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let post of postData">
+            <div class="card" [id]=post.id> <!--property binding as well as stringInterpolation{{post.id}}-->
+                <div class="card-header">
+                    <h3 class="text-capitalize m-0" title="{{post.title}}">{{post.title}}</h3>
+                </div>
+                <div class="card-body">
+                    <p>{{post.body}}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

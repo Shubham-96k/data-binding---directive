@@ -1,0 +1,31 @@
+<app-product-root></app-product-root>
+<iphone-root></iphone-root>
+
+<app-singleFile-root></app-singleFile-root>
+
+<app-databind></app-databind>
+
+<button class="btn btn-outline-primary" (click)="addproduct()">add button</button>
+<button class="btn btn-outline-danger ml-2" (click)="removeproduct()" [disabled]="productNumber === 0">remove</button>
+
+<p class="alert alert-info my-2">
+    {{productStatus}}
+</p>
+
+<div class="form-group">
+    <label for="">One Way Binding</label>
+    <input type="text" class="form-control" (keyup)="searchValue($event)">
+</div>
+
+<p class="alert alert-warning text-dark">
+    {{searchedValue}}
+</p>
+
+<div class="form-group">
+    <label for="">Two Way Binding</label>
+    <input type="text" class="form-control" [(ngModel)]="searchedValue2">
+</div>
+
+<p class="alert alert-danger text-dark">
+    {{searchedValue2}}
+</p>

@@ -1,0 +1,15 @@
+<h3 class="bg-primary text-white text-center p-4 mb-4">Iterating Array created lists by templating in Angular</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <ul class="list-group">
+                <!-- <li class="list-group-item" *ngFor="let skill of skillsArray; let i = index">
+                    {{i + 1}}) I Love {{skill}}
+                </li> -->
+                <li class="list-group-item mb-1" *ngFor="let skill of skillsArray; index as i">
+                    {{i + 1}}) I Love <strong>{{skill}}</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

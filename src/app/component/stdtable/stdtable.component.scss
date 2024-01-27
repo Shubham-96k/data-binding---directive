@@ -1,0 +1,14 @@
+table{
+    table-layout: auto;
+    box-shadow: 0px 8px 20px 0px rgba(0,0,0,.6);
+    thead{
+        background-color:burlywood;
+        color: black;
+        text-transform: capitalize;
+    }
+    tbody{
+        background-color:antiquewhite;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+    }
+}

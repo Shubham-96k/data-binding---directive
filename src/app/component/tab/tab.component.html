@@ -1,0 +1,104 @@
+<!-- <p>tab works!</p> -->
+<h1 class="bg-success text-white text-center p-4 mb-4">ng-Tabs</h1>
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-items" (click)="skillset('javascript')">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillSet.toLowerCase().includes('javascript')
+                    }">
+                        javascript
+                    </a>
+                </li>
+                <li class="nav-items" (click)="skillset('angular')">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillSet.toLowerCase().includes('angular')
+                    }">
+                        angular
+                    </a>
+                </li>
+                <li class="nav-items" (click)="skillset('node')">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillSet.toLowerCase().includes('node')
+                    }">
+                        node
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs-body">
+                <div class="card" *ngIf="selectedSkillSet.toLowerCase().trim() === 'javascript'">
+                <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes('javascript')">
+                <div class="card-body">
+                        <strong>Javascript</strong>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure in esse atque! Nisi cumque labore dolorum magni sapiente eum soluta obcaecati architecto blanditiis, eaque cum eius odit ea at fugiat.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate laborum doloremque quidem cumque maxime tempora odio rem, quis tempore aliquid facere autem pariatur! Illum tempore laudantium optio harum, atque facere!
+                    </div>
+                </div>
+                <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes('angular')">
+                    <div class="card-body">
+                        <strong>Angular</strong>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure in esse atque! Nisi cumque labore dolorum magni sapiente eum soluta obcaecati architecto blanditiis, eaque cum eius odit ea at fugiat.
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptatem cupiditate quos itaque deleniti nulla ea repellat tenetur, possimus asperiores, omnis, magni repellendus sint. Vitae aut ad blanditiis perferendis at?
+                    </div>
+                </div>
+                <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes('node')">
+                    <div class="card-body">
+                        <strong>Node Js</strong>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure in esse atque! Nisi cumque labore dolorum magni sapiente eum soluta obcaecati architecto blanditiis, eaque cum eius odit ea at fugiat.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit facere possimus minima assumenda magni repellat delectus quas perferendis, eum mollitia recusandae voluptas sint. Harum fuga cum maiores voluptatem distinctio. Magni?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div> -->
+
+        <!-- Refactor -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-items" *ngFor="let skill of skillsArray"
+                (click)="selectedSkillSet = skill.skillName">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillSet.toLowerCase().includes(skill.skillName)
+                    }">
+                        {{skill.skillName}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs-body">
+                <ng-container *ngFor="let skill of skillsArray"><!--not render on UI-->
+                    <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes(skill.skillName)">
+                        <div class="card-body" [innerHTML]="skill.content">
+                            <!-- here string interpolation won't work as received data has 
+                            html element string interpolation will concat html element as well -->
+                            <!-- {{skill.content}} -->
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,128 @@
+<!-- Structural directive -->
+
+<h1 class="bg-dark text-white text-center p-4 mb-4">ngSwitch-Tab</h1>
+
+<div class="numsvalue">
+    <p *ngIf="numsValue === 5">
+        The value is 5
+    </p>
+    <p *ngIf="numsValue === 10">
+        The value is 10
+    </p>
+    <p *ngIf="numsValue === 15">
+        The value is 15
+    </p>
+    <!-- <p *ngIf="numsValue !== 5 && numsValue !== 10 && numsValue !== 15"> -->
+    <p *ngIf="![5,10,15].includes(numsValue)">
+    The value is anything apart from 5,10 and 15
+    </p>
+</div>
+
+<!-- by using Switch-Tab -->
+
+<div class="numsvalue" [ngSwitch]="numsValue2">
+    <p *ngSwitchCase="5">
+        The value is 5
+    </p>
+    <p *ngSwitchCase="10"> <!--if switch is 10 then this case element willrender on UI-->
+        The value is 10
+    </p>
+    <p *ngSwitchCase="15">
+        The value is 15
+    </p>
+    <p *ngSwitchDefault> <!-- if switch not match with switch case then switch default will render on UI-->
+        The value is anything apart from 5,10 and 15
+    </p>
+</div>
+
+<!-- ng-Switch-Tab -->
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-items"
+                (click)="selectedSkill('javascript')">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillset.toLowerCase().includes('javascript')
+                    }">
+                        javascript
+                    </a>
+                </li>
+                <li class="nav-items"
+                (click)="selectedSkill('angular')">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillset.toLowerCase().includes('angular')
+                    }">
+                        angular
+                    </a>
+                </li>
+                <li class="nav-items"
+                (click)="selectedSkill('node')">
+                    <a href="javascript:;" class="nav-link text-capitalize"
+                    [ngClass]="{
+                        active : selectedSkillset.toLowerCase().includes('node')
+                    }">
+                        node
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="tabs-body">
+                <div class="card" *ngIf="selectedSkillset.toLowerCase().includes('javascript')">
+                    <div class="card-body">
+                        <strong>Javascript</strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure in esse atque! Nisi cumque labore dolorum magni sapiente eum soluta obcaecati architecto blanditiis, eaque cum eius odit ea at fugiat.
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate laborum doloremque quidem cumque maxime tempora odio rem, quis tempore aliquid facere autem pariatur! Illum tempore laudantium optio harum, atque facere!
+                    </div>
+                </div>
+                <div class="card" *ngIf="selectedSkillset.toLowerCase().includes('angular')">
+                    <div class="card-body">
+                        <strong>Angular</strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure in esse atque! Nisi cumque labore dolorum magni sapiente eum soluta obcaecati architecto blanditiis, eaque cum eius odit ea at fugiat.
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate laborum doloremque quidem cumque maxime tempora odio rem, quis tempore aliquid facere autem pariatur! Illum tempore laudantium optio harum, atque facere!
+                    </div>
+                </div>
+                <div class="card" *ngIf="selectedSkillset.toLowerCase().includes('node')">
+                    <div class="card-body">
+                        <strong>Node Js</strong>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure in esse atque! Nisi cumque labore dolorum magni sapiente eum soluta obcaecati architecto blanditiis, eaque cum eius odit ea at fugiat.
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate laborum doloremque quidem cumque maxime tempora odio rem, quis tempore aliquid facere autem pariatur! Illum tempore laudantium optio harum, atque facere!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<h3 class="text-center mb-4">By using Switch Case</h3>
+<hr>
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <ul class="nav nav-pills justify-content-center">
+                <li class="nav-items" *ngFor="let skill of skillsArray"
+                (click)="selectedSkillset2 = skill.skillName">
+                    <a href="javascript:;" class="nav-link text-uppercase font-weight-bold"
+                    [ngClass]="{
+                        active : selectedSkillset2.toLowerCase().includes(skill.skillName)
+                    }">
+                        {{skill.skillName}}
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="tabs-body">
+                <ng-container *ngFor="let skill of skillsArray" [ngSwitch]="selectedSkillset2">
+                    <div class="card" *ngSwitchCase="skill.skillName">
+                        <div class="card-body" [innerHTML]="skill.content">
+                            
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
